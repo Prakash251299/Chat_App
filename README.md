@@ -33,9 +33,6 @@ Install my-project
 ```bash
   Will upload the apk file soon...
 ```
-    
-## 🚀 About Me
-I'm an application developer...
 
 ## 🔗 Links
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://github.com/Prakash251299)
