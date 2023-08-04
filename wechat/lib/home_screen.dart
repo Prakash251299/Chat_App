@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'chatUser.dart';
@@ -54,6 +53,13 @@ class _MyHomeScreenState extends State<MyHomeScreenPage> {
               
               List l = data?.map((e)=>ChatUser.fromJson(e.data())).toList()??[];
               list = l.cast<ChatUser>();
+              // var k;
+              for(int i=0;i<list.length;i++){
+                if(list[i].email==APIs.user.email){ // For removing the original user
+                  list.removeAt(i);
+                  break;
+                }
+              }
               if(list.isNotEmpty){
                 return
                 ListView.builder(
@@ -62,7 +68,7 @@ class _MyHomeScreenState extends State<MyHomeScreenPage> {
                   physics: BouncingScrollPhysics(),
                   itemBuilder: (context,index){
                     return ChatUserCard(user:list[index]);
-                    // return ChatUserCard();
+                    // return Container(child: Text("hgjh"),);
                   }
                 );
               }else{

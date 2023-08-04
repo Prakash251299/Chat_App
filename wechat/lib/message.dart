@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 class Message {
   Message({
     // required this.type,
-    required this.told,
+    required this.toId,
     required this.read,
     required this.sent,
     required this.msg,
     required this.fromid,
   });
   // late final String type;
-  late final String told;
+  late final String toId;
   late final String read;
   late final String sent;
   late final String msg;
@@ -19,7 +19,7 @@ class Message {
   Message.fromJson(Map<String, dynamic> json){
     // type = json['type'].toString()==Type.image.name?Type.image:Type.text;
     // type = json['type'].toString()==Type.image.name?Type.image.name:Type.text.name;
-    told = json['told'].toString();
+    toId = json['toId'].toString();
     read = json['read'].toString();
     sent = json['sent'].toString();
     msg = json['msg'].toString();
@@ -30,7 +30,7 @@ class Message {
     final _data = <String, dynamic>{};
     // _data['type'] = type;
     // _data['type'] = type;
-    _data['told'] = told;
+    _data['toId'] = toId;
     _data['read'] = read;
     _data['sent'] = sent;
     _data['msg'] = msg;
