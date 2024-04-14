@@ -34,6 +34,7 @@ class _ChatUserCardState extends State<ChatUserCard> {
     //   scrollDirection: Axis.vertical,
     //   itemCount: 10,
     //   itemBuilder: (context,index)=>
+    
         Card(
           margin: EdgeInsets.symmetric(horizontal:mq.width*0.04,vertical:mq.height*0.01),
           shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(15)),
@@ -45,7 +46,8 @@ class _ChatUserCardState extends State<ChatUserCard> {
 
               // print(widget.user.name);
             },
-            child: ListTile(
+            child: 
+            ListTile(
               leading: const CircleAvatar(child:Icon(Icons.person)),
               // title: Text('${lname[j]}'),
 
@@ -59,5 +61,10 @@ class _ChatUserCardState extends State<ChatUserCard> {
           ),
         // ),
       );
+  }
+
+  Widget myWidget(){
+    print(widget.user.email);
+    return Container();
   }
 }

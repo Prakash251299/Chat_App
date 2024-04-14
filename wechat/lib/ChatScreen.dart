@@ -34,6 +34,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  TextEditingController _textController = TextEditingController();
   List<Message> list = [];
   @override
   Widget build(BuildContext context) {
@@ -70,7 +71,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
         Expanded(
           child: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('messages').snapshots(),
+        stream: FirebaseFirestore.instance.collection('chats').snapshots(),
 
         // builder: (BuildContext context, AsyncSnapshot<QuerySnapshot>snapshot){
         builder: (context, AsyncSnapshot snapshot){
@@ -141,19 +142,33 @@ class _ChatScreenState extends State<ChatScreen> {
                   itemBuilder: (context,index){
                     // return Text("Message: ${list[index]}");
 
-                    return MessageCard(message: list[index]);
+
+                    // if(APIs.user==null){
+                    //   print("Not Null");
+
+                    // }else{
+                    //   print("Null");
+                    // }
+
+
+//                     print(APIs.user.email);
+                    // return Container();
+
+                    return MessageCard(message: list[index],user:widget.user);
 
                     // return ChatUserCard(user:list[index]);
                     // return ChatUserCard();
                   }
                 );
               }else{
+                // print(widget.user.name);
                 return Center(child: Text("Hello there!",style: TextStyle(fontSize: 20)),);
               }
           }
         }
       ),
         ),
+
         _chatInp(),
       ],)
     );
@@ -210,6 +225,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 Expanded(
                   child: TextField(
                     keyboardType: TextInputType.multiline,
+                    controller: _textController,
                     maxLines: null,
                     decoration: InputDecoration(
                       hintText: "Input...",
@@ -287,7 +303,12 @@ class _ChatScreenState extends State<ChatScreen> {
           
           
                 MaterialButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    if(_textController.text.isNotEmpty){
+                      APIs.sendMess(widget.user,_textController.text);
+                      _textController.text = '';
+                    }
+                  },
                   padding:EdgeInsets.only(top:10,left:10,right:5,bottom:10),
                   shape:const CircleBorder(),
                   color:Colors.green,

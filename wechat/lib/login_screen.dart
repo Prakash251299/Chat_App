@@ -52,29 +52,46 @@ class ScreenState extends State<LoginPage> {
 
 
   _handleGoogleBtnClick(){
-    _signInWithGoogle().then((user){
-      // log('User:${user.user}');
-      // print("hi");
-      Navigator.push(context,MaterialPageRoute(builder:(_)=>MyHomeScreenPage(title: "FLutter chat app",)));
+    _signInWithGoogle().then((user) async {
+      if(await APIs.userExists()){
+        Navigator.push(context,MaterialPageRoute(builder:(_)=>MyHomeScreenPage(title: "FLutter chat app",)));
+      }else{
+        APIs.createUser().then((value) => {
+          Navigator.push(context,MaterialPageRoute(builder:(_)=>MyHomeScreenPage(title: "FLutter chat app",))),
+        });
+      }
     });
   }
 
-  Future<UserCredential> _signInWithGoogle() async {
-  // Trigger the authentication flow
-  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  Future<UserCredential?> _signInWithGoogle() async {
+    try{
+      // Trigger the authentication flow
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-  // Obtain the auth details from the request
-  final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
 
-  // Create a new credential
-  final credential = GoogleAuthProvider.credential(
-    accessToken: googleAuth?.accessToken,
-    idToken: googleAuth?.idToken,
-  );
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
 
-  // Once signed in, return the UserCredential
-  return await APIs.auth.signInWithCredential(credential);
+      // Once signed in, return the UserCredential
+      return await APIs.auth.signInWithCredential(credential);
+    }catch(e){
+      print("Something went wrong");
+      return null;
+    }
 }
+
+  // Future<int>fetchAllowance(){
+  //   Stream<QuerySnapshot> stream = FirebaseFirestore.instance.collection('allowance').snapshots();
+  //   stream.forEach((QuerySnapshot element){
+  //
+  //     print(element.docs[0]['allowed']);
+  //   });
+  // }
 
   // final String title;
   @override
@@ -84,7 +101,8 @@ class ScreenState extends State<LoginPage> {
        appBar: AppBar(
         title: Text(widget.title),
       ),
-      body:Stack(children: [
+      body:Stack(
+          children: [
         AnimatedPositioned(
           top: mq.height*.15,
           // left:mq.width*.25,
@@ -94,21 +112,25 @@ class ScreenState extends State<LoginPage> {
           duration:Duration(seconds:1),
           child:Image.asset("images/chatIcon.png"),
         ),
+        // Stack(
+        //     alignment:Alignment.bottomLeft,
+        //     children:[ ////////////////
         Positioned(
           bottom: mq.height*.15,
           left:mq.width*.25,
           width:mq.width*0.5,
           height:mq.height*0.05,
-          child:ElevatedButton.icon(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Color.fromARGB(255, 223, 255, 187),
-              shape: StadiumBorder(),
-              elevation: 1,
-            ),
+
+
+          child:
+          // Text("sd"),
+          ElevatedButton(
             onPressed: (){
+
+              // var a = await fetchAllowance();
               // print(Platform.operatingSystem);
               // print('OS: ${defaultTargetPlatform}');
-                // _handleGoogleBtnClick();
+              // _handleGoogleBtnClick();
               if(defaultTargetPlatform==TargetPlatform.android){
                 _handleGoogleBtnClick();
               }else{
@@ -122,17 +144,89 @@ class ScreenState extends State<LoginPage> {
 
               // Navigator.push(context,MaterialPageRoute(builder:(context)=>MyHomePage(title: "FLutter chat app",)));
             },
-            // icon:Image.asset("images/chatIcon.png"),
-            label:RichText(text: TextSpan(
-              style: TextStyle(fontSize: 15),
-              children:[
-                TextSpan(text: 'Sign in with '),
-                TextSpan(text: 'Google',style:TextStyle(fontWeight:FontWeight.w500)),
-            ])),
-            icon:Image.asset("images/googleIcon.png"),
-            // child:,
+            child: Column(
+                // alignment:Alignment.topLeft,
+              mainAxisAlignment:MainAxisAlignment.center,
+                children:[
+                  Stack(
+                      alignment:Alignment.topLeft,
+                      children:[
+                        Image(
+                          image:AssetImage('images/googleIcon.png'),
+                          height: mq.width*0.08,
+                          // height: 10,
+                        ),
+                        Row(
+                    mainAxisAlignment:MainAxisAlignment.center,
+                            // crossAxisAlignment:CrossAxisAlignment.center,
+                    //       main
+                            children:[
+
+                        Text("Sign in with google"),
+                              // Text("sad"),
+                        ]),
+                        // icon:Image.asset("images/googleIcon.png"),
+                  //     ]
+                  // ),
+                  // Stack(
+                  //     alignment:Alignment.topLeft,
+                  //     children:[
+                  //       Row
+                      ]
+                  )
+              // Image.asset("images/googleIcon.png"),
+              // Column(
+              //     mainAxisAlignment:MainAxisAlignment.center,
+              //   // alignment:Alignment.bottomRight,
+              //     children:[
+              //   Text("Sign in with google"),
+              // ]),
+
+            ]),
+            // Text("dfs"),
           ),
+
+
+
+
+
+          // ElevatedButton.icon(
+          //   style: ElevatedButton.styleFrom(
+          //     backgroundColor: Colors.blue,
+          //     // shape: StadiumBorder(),
+          //     elevation: 1,
+          //   ),
+          //   onPressed: (){
+          //     // print(Platform.operatingSystem);
+          //     // print('OS: ${defaultTargetPlatform}');
+          //       // _handleGoogleBtnClick();
+          //     if(defaultTargetPlatform==TargetPlatform.android){
+          //       _handleGoogleBtnClick();
+          //     }else{
+          //       if(defaultTargetPlatform==TargetPlatform.iOS){
+          //         _handleGoogleBtnClick();
+          //       }else{
+          //         Navigator.pushReplacement(context,MaterialPageRoute(builder:(context)=>MyHomeScreenPage(title: "FLutter chat app",)));
+          //       }
+          //     }
+          //
+          //
+          //     // Navigator.push(context,MaterialPageRoute(builder:(context)=>MyHomePage(title: "FLutter chat app",)));
+          //   },
+          //   // icon:Image.asset("images/chatIcon.png"),
+          //   label:RichText(text: TextSpan(
+          //     style: TextStyle(fontSize: 15),
+          //     children:[
+          //       TextSpan(text: 'Sign in with '),
+          //       TextSpan(text: 'Google',style:TextStyle(fontWeight:FontWeight.w500)),
+          //   ])),
+          //   icon: Image.asset("images/googleIcon.png"),
+          // ),
+
+
+
         ),
+         // ])   // Stack(children:[Text("hi")]),
       ]),
     );
   }
