@@ -1,11 +1,11 @@
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'chatUser.dart';
-import 'login_screen.dart';
-import './main.dart';
+import '../modal/chatUser.dart';
+import '../controller/login.dart';
+import '../main.dart';
 import 'chatUserCard.dart';
-import 'apis.dart';
+import '../controller/apis.dart';
 import 'dart:convert';
 
 class MyHomeScreenPage extends StatefulWidget {

@@ -2,10 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:prac/apis.dart';
+import 'package:prac/controller/apis.dart';
 import 'package:prac/firebase_options.dart';
-import 'package:prac/home_screen.dart';
-import 'package:prac/login_screen.dart';
+import 'package:prac/view/home_screen.dart';
+import 'package:prac/controller/login.dart';
 
 Future<void> main() async {
   

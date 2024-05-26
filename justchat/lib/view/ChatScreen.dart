@@ -5,12 +5,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:prac/messageCard.dart';
+import 'package:prac/view/messageCard.dart';
 // import 'package:wechat/messageCard.dart';
-import 'apis.dart';
-import 'chatUser.dart';
+import '../controller/apis.dart';
+import '../modal/chatUser.dart';
 // import 'chatUserCard.dart';
-import 'message.dart';
+import '../modal/message.dart';
 
 // import 'dart:developer';
 
