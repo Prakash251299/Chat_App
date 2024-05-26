@@ -30,8 +30,8 @@ To run this project run the command in the directory
 
 Install my-project
 
-```bash
-  Will upload the apk file soon...
+```
+https://github.com/Prakash251299/Chat_App/blob/ishu/justchat/myapk/app-release.apk
 ```
 
 ## Screenshots
