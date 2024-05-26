@@ -38,7 +38,6 @@ class ScreenState extends State<LoginPage> {
       print("hello");
       signInWithGoogle().then((v) async {
         if(await APIs.userExists()){
-        // print(v.user);
         print(APIs.auth.currentUser);
         Navigator.push(context,MaterialPageRoute(builder:(_)=>MyHomeScreenPage(title: "FLutter chat app",)));
       }else{
@@ -86,7 +85,7 @@ class ScreenState extends State<LoginPage> {
           width:mq.width*0.5,
           height:mq.height*0.5,
           duration:Duration(seconds:1),
-          child:Image.asset("images/chatIcon.png"),
+          child:Image.asset("icon/justchat_icon.png"),
         ),
         
         Positioned(

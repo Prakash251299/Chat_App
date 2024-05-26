@@ -135,7 +135,18 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return
-    LoginPage(title: "Welcome") ;
+    // return 
+    // APIs.userExists().then((value) {
+    //   if(value==true){
+    //     return Navigator.push(context,MaterialPageRoute(builder:(_)=>MyHomeScreenPage(title: "FLutter chat app",)));
+    //   }else{
+    //     return 
+    //       LoginPage(title: "Welcome") ;
+    //   }
+    // });
+    
+    return LoginPage(title: "Welcome") ;
+    //     print(APIs.auth.currentUser);
+        // Navigator.push(context,MaterialPageRoute(builder:(_)=>MyHomeScreenPage(title: "FLutter chat app",)));
   }
 }
