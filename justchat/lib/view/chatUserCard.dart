@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:prac/apis.dart';
+import 'package:prac/controller/apis.dart';
 // import 'package:flutter/src/widgets/placeholder.dart';
 // import 'package:wechat/apis.dart';
-import 'chatUser.dart';
+import '../modal/chatUser.dart';
 // import 'home_screen.dart';
 import 'ChatScreen.dart';
 

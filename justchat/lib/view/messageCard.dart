@@ -1,9 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'apis.dart';
-import 'chatUser.dart';
-import 'message.dart';
+import '../controller/apis.dart';
+import '../modal/chatUser.dart';
+import '../modal/message.dart';
 // import 'chatuserCard.dart';
 
 class MessageCard extends StatefulWidget {

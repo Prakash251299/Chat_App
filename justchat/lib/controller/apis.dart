@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:prac/message.dart';
+import 'package:prac/modal/message.dart';
 // import 'package:wechat/message.dart';
-import 'chatUser.dart';
-import 'login_screen.dart';
-import 'messageCard.dart';
+import '../modal/chatUser.dart';
+import 'login.dart';
+import '../view/messageCard.dart';
 class APIs{
   static FirebaseAuth auth = FirebaseAuth.instance;
   static User get user => auth.currentUser!;
