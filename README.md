@@ -37,8 +37,9 @@ Install my-project
 ## Screenshots
 ![Login1](https://github.com/Prakash251299/Chat_App/assets/88026044/4f149f01-d773-46a6-8c50-d91773684a03)
 ![login2](https://github.com/Prakash251299/Chat_App/assets/88026044/6005c8f9-1d6a-426c-b8c7-f90fe00ab857)
-![users](https://github.com/Prakash251299/Chat_App/assets/88026044/7dcbddfd-3865-4238-8714-e6724803e7b2)
-![chatscreen](https://github.com/Prakash251299/Chat_App/assets/88026044/61f36f84-9602-4d83-bca7-b781b7eed29b)
+![WhatsApp Image 2024-05-26 at 1 55 15 PM](https://github.com/Prakash251299/Chat_App/assets/88026044/262581bf-4838-4679-bed5-40f150571c1a)
+![WhatsApp Image 2024-05-26 at 1 53 27 PM](https://github.com/Prakash251299/Chat_App/assets/88026044/85650c56-3294-47fc-87b7-5ca5c18e7b58)
+
 
 
 
