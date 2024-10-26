@@ -18,14 +18,6 @@ To run this project run the command in the directory
  - [Firestore database](https://console.firebase.google.com/u/0/project/wechat-e9ad3/firestore/data/~2Fchats~2F1689515343724)
 
 
-
-## Documentation
-
-[Documentation](https://docs.flutter.dev/)
-
-
-
-
 ## Installation
 
 Install my-project
